@@ -11,6 +11,7 @@
     <script src="./assets/lib/layui/layui.all.js"></script>
     <script src="./assets/lib/jquery.js"></script>
     <script src="./assets/js/loginmy.js"></script>
+    <script src="./assets/js/baseAPI.js"></script>
 
 </head>
 
@@ -28,7 +29,7 @@
             <!-- 表单盒子-->
             <div class="login-box">
                 <!-- 表单 -->
-                <form class="layui-form" method="post">
+                <form class="layui-form" method="post" id="form_login">
                     <!-- 用户名 -->
                     <div class="layui-form-item">
                         <i class="layui-icon layui-icon-username"></i>
@@ -58,7 +59,7 @@
             <!-- 表单盒子-->
             <div class="login-box">
                 <!-- 表单 -->
-                <form class="layui-form">
+                <form class="layui-form" id="form_reg">
                     <!-- 用户名 -->
                     <div class="layui-form-item">
                         <i class="layui-icon layui-icon-username"></i>
@@ -74,13 +75,14 @@
                         <i class="layui-icon layui-icon-password"></i>
                         <input type="password" name="password" required lay-verify="required|repwd" placeholder="确认密码" autocomplete="off" class="layui-input">
                     </div>
-                    <!-- 登录按钮 -->
+                    <!-- 注册按钮 -->
                     <div class="layui-form-item">
                         <button class="layui-btn layui-btn-fluid layui-btn-normal" lay-submit>注册</button>
                     </div>
                     <!-- 注册 -->
                     <div class="layui-form-item" id="links">
-                        <a href="javascript:;" id="link-login">去登陆</a>
+                        <!-- <a href="javascript:;" id="link-login">去登陆</a> -->
+                        <a href="javascript:;" id="link-login">去登录</a>
                     </div>
 
                 </form>
