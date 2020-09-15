@@ -79,7 +79,29 @@ $(function() {
 
     })
 
+    //编辑之后 渲染
+    $('body').on('submit', '#form-edit', function(e) {
 
+        e.preventDefault()
+        $.ajax({
+            method: 'post',
+            url: '/my/article/updatecate',
+            data: $(this).serialize(),
+            success: function(res) {
+                // console.log(res);
+                if (res.status !== 0) {
+                    return layer.msg(res.message)
+                }
+                //使用模板引擎渲染页面
+                layer.msg('编辑分类成功')
+                getCateList()
+                layer.close(editCateIndex)
+            }
+
+        })
+    })
+
+    //删除
     $('body').on('submit', '#form-edit', function(e) {
         e.preventDefault()
         $.ajax({
@@ -100,4 +122,27 @@ $(function() {
         })
     })
 
+
+    $('body').on('click', '.btn-delete', function() {
+
+        var cateid = $(this).attr('data-id')
+        layer.confirm('确认删除?', { icon: 3, title: '提示' }, function(index) {
+            $.ajax({
+                method: 'get',
+                url: `/my/article/deletecate/${cateid}`,
+                data: $(this).serialize(),
+                success: function(res) {
+                    // console.log(res);
+                    if (res.status !== 0) {
+                        return layer.msg(res.message)
+                    }
+                    //使用模板引擎渲染页面
+                    layer.msg('删除成功')
+                    getCateList()
+                    layer.close(index)
+                }
+
+            })
+        })
+    })
 })
